@@ -7,7 +7,11 @@ public class MyCoords implements coords_converter {
 	private final int radius = 6371*1000;
 	
 	
-	@Override
+	/**
+	 *  computes a new point which is the gps point transformed by a 3D vector (in meters)
+	 * @param Point3D gps - point in degree. Point3D local_vector_in_meter -point in meter
+	 * @return new point in degree
+	 */
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {	
 		
 		double gps2_x = latMeterToRadian(local_vector_in_meter.x());
@@ -26,17 +30,21 @@ public class MyCoords implements coords_converter {
 		
 	}
 
-	public double latMeterToRadian(double x){
+	public double latMeterToRadian(double x){ // this function convert lattitude meter to radian
 		double latRad = Math.asin(x/radius);
 		return latRad;
 	}
 	
-	public double lonMeterToRadian(double x,double y){
+	public double lonMeterToRadian(double x,double y){ // this function convert lontitude meter to radian
 		double lonRad = Math.asin(x/radius*y);
 		return lonRad;
 	}
 
-	@Override
+	/**
+	 * computes the 3D distance (in meters) between the two gps like points
+	 * @param gps0 ,gps1 - both two point that we calculate distance between them 
+	 * @return distance
+	 */
 	public double distance3d(Point3D gps0, Point3D gps1) {
 		
 		Point3D gps_new = new Point3D(gps1.x()-gps0.x(),gps1.y()-gps0.y());
@@ -44,7 +52,7 @@ public class MyCoords implements coords_converter {
 		
 	}
 	
-	private Point3D angles_meter(Point3D gps0,Point3D gps1){
+	private Point3D angles_meter(Point3D gps0,Point3D gps1){ // this function calculate degree to radian
 		double gps0_x = gps0.d2r(gps0.x());
 		double gps0_x1 = latRadianToMeter(gps0_x);
 		
@@ -67,7 +75,12 @@ public class MyCoords implements coords_converter {
 	}
 	
 
-	@Override
+	/**
+	 * computes the 3D vector (in meters) between two gps like points
+	 * @param gps1, gps - vecton between two points
+	 * @retrun vector
+	 * 
+	 */
 	public Point3D vector3D(Point3D gps0, Point3D gps1) {
 		
 		Point3D gps2 = new Point3D(gps1.x()-gps0.x(),gps1.y()-gps0.y());
@@ -77,7 +90,12 @@ public class MyCoords implements coords_converter {
 		return gps_new;
 	}
 
-	@Override
+	/**
+	 * computes the polar representation of the 3D vector be gps0-->gps1 
+	 * Note: this method should return an azimuth (aka yaw), elevation (pitch), and distance*
+	 * @param gps0 gps1
+	 * @return array  with yaw pitch distance
+	 */
 	public double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
 		
 		double [] aed = new double[3];
@@ -91,7 +109,11 @@ public class MyCoords implements coords_converter {
 		return aed;
 	}
 
-	@Override
+	/**
+	 * return true iff this point is a valid lat, lon , alt coordinate: [-180,+180],[-90,+90],[-450, +inf]
+	 * @param p - piont inn test for validness
+	 * return boolean
+	 */
 	public boolean isValid_GPS_Point(Point3D p) {
 		 	boolean flag = true;
 		 	if(p.x()>180||p.x()<-180){
