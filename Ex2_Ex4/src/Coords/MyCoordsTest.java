@@ -3,12 +3,11 @@ package Coords;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import Geom.Point3D;
 
 public class MyCoordsTest {
-/*
+
 	@Test
 	public void testAdd() {
 		MyCoords test = new MyCoords();
@@ -16,10 +15,11 @@ public class MyCoordsTest {
 		Point3D gps1 = new Point3D(337.6989921,-359.2492069,-20);
 		Point3D gps2 = new Point3D(32.10635200000035,35.20580819426608,650.0);
 		Point3D gps = test.add(gps0,gps1);
-		if(gps!=gps2)
-			fail("Not yet implemented");
+		assertEquals(gps.x(), gps2.x(), 1);
+		assertEquals(gps.y(), gps2.y(), 1);
+		assertEquals(gps.z(), gps2.z(), 1);
+
 	}
-*/
 	@Test
 	public void testDistance3d() {
 		MyCoords test = new MyCoords();
