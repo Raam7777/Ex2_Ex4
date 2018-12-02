@@ -9,8 +9,6 @@ import GIS.gisLayer;
 import GIS.gisProject;
 /**
  * The algorithm returns a data structure of a collection of layers of geographic information.
- * @author Raam Banin and sapir.
- * 
  */
 public class MultiCsv {
 	

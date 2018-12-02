@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import GIS.gisElement;
 /**
  * Reads csv files.
- * @author Raam Banin
  * https://alvinalexander.com/blog/post/java/how-open-read-file-java-string-array-list
  */
 public class CsvReader {

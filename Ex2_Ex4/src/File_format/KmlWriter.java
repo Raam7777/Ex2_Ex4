@@ -11,8 +11,6 @@ import GIS.GIS_element;
 import GIS.GIS_layer;
 /**
  * Writes kml files.
- * @author Raam Banin
- *
  */
 public class KmlWriter {
 
