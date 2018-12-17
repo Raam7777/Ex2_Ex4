@@ -4,34 +4,40 @@ import Geom.Point3D;
 
 public class Fruits {
 
-	private static final long serialVersionUID = 1L;
-	private Point3D fruit;
-	private int weight;
 	
+	private Point3D point;
+	private double weight;
+	private int ID;
 	
-	public Fruits(Point3D p, int w){
-		this.fruit = p;
+	public Fruits(Point3D p, double w, int id){
+		this.point = p;
 		this.weight = w;
+		this.ID = id;
+	}
+
+	
+	public int getID() {
+		return ID;
 	}
 
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setID(int iD) {
+		ID = iD;
 	}
 
 
 	public Point3D getFruit() {
-		return fruit;
+		return point;
 	}
 
 
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
 
 	public void setFruit(Point3D fruit) {
-		this.fruit = fruit;
+		this.point = fruit;
 	}
 
 
