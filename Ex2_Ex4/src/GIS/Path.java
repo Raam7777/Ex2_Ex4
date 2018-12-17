@@ -12,7 +12,11 @@ public class Path {
 	private Packman packman;
 	private ArrayList<Fruits> fruits;
 	
-
+	public Path(Packman p){
+		packman = new Packman(p);
+		fruits = new ArrayList<Fruits>();
+	}
+	
 	public Path(Packman p, ArrayList<Fruits> fruit) {
 		packman = new Packman(p);
 		fruits = new ArrayList<Fruits>();
@@ -22,8 +26,21 @@ public class Path {
 		}
 	}
 	
-	public double Time(Fruits f){
-		return packman.getLocation().distance2D(f.getFruit())/packman.getSpeed();
+	public double Time( ArrayList<Fruits> fruit){
+		fruits = new ArrayList<Fruits>();
+		Iterator<Fruits> itFruit = fruit.iterator();
+		double time= packman.getPoint().distance2D(itFruit.next().getFruit())/packman.getSpeed();
+		double timeSmall=0;
+		while(itFruit.hasNext()) {
+			if(time<packman.getPoint().distance2D(itFruit.next().getFruit())/packman.getSpeed()){
+				timeSmall = time;
+			}
+			else{
+				time = packman.getPoint().distance2D(itFruit.next().getFruit())/packman.getSpeed();
+				timeSmall=time;
+			}
+		}
+		return timeSmall;
 	}
 
 	public Packman getPackman() {

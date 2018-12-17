@@ -33,7 +33,7 @@ public class Packman {
 		ID = iD;
 	}
 
-	public Point3D getLocation() {
+	public Point3D getPoint() {
 		return point;
 	}
 
@@ -45,8 +45,8 @@ public class Packman {
 		return Speed;
 	}
 
-	public void setLocation(Point3D location) {
-		this.point = location;
+	public void setPoint(Point3D point) {
+		this.point = point;
 	}
 
 	public void setRadius(int radius) {
