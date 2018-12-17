@@ -3,6 +3,8 @@ package GIS;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Geom.Point3D;
+
 
 
 public class Path {
@@ -18,6 +20,10 @@ public class Path {
 		while(itFruit.hasNext()) {
 			fruits.add(itFruit.next());
 		}
+	}
+	
+	public double Time(Fruits f){
+		return packman.getLocation().distance2D(f.getFruit())/packman.getSpeed();
 	}
 
 	public Packman getPackman() {
