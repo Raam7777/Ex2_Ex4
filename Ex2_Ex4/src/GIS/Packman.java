@@ -1,15 +1,22 @@
 package GIS;
 
+import Coords.MyCoords;
 import Geom.Point3D;
 
 public class Packman {
 
-	
+
 	private Point3D point;
 	private double Radius;
 	private double Speed;
+	private long time;
 	private int ID;
-	
+
+	public Packman(Point3D p, long t){
+		this.point = p;
+		this.time = t;
+	}
+
 	public Packman(Point3D p, double r , double s,int id){
 		this.point = p;
 		this.Radius = r;
@@ -23,7 +30,6 @@ public class Packman {
 		this.Speed = other.Speed;
 		this.ID = other.ID;
 	}
-
 
 	public int getID() {
 		return ID;
@@ -56,7 +62,13 @@ public class Packman {
 	public void setSpeed(int speed) {
 		Speed = speed;
 	}
-	
-	
-	
+
+	public long getTime() {
+		return time;
+	}
+
+	public void setTime(long time) {
+		this.time = time;
+	}
+
 }

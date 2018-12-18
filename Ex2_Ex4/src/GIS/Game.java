@@ -82,6 +82,38 @@ public class Game {
 		sc.close();
 		return Csv;
 	}
+	
+	public void addFruits(Fruits f){
+		fruits.add(f);
+	}
+	
+	public void addPackman(Packman p){
+		packmans.add(p);
+	}
+	
+	public Iterator<Fruits> iteratorFruit(){
+		return fruits.iterator();
+	}
+	
+	public Iterator<Packman> iteratorPackman(){
+		return packmans.iterator();
+	}
+	
+	public int sizeFruits(){
+		return fruits.size();
+	}
+	
+	public int sizePackman(){
+		return packmans.size();
+	}
+	
+	public Fruits getFruits(int index) {
+		return fruits.get(index);
+	}
+	
+	public Packman getPackmen(int index) {
+		return packmans.get(index);
+	}
 
 	public ArrayList<Fruits> getFruits() {
 		return fruits;
@@ -97,6 +129,18 @@ public class Game {
 
 	public void setPackmans(ArrayList<Packman> packmans) {
 		this.packmans = packmans;
+	}
+	
+	public ArrayList<Fruits> addAllFruits(){
+		ArrayList<Fruits> listF = new ArrayList<Fruits>();
+		listF.addAll(fruits);
+		return listF;
+	}
+	
+	public ArrayList<Packman> addAllPackmans(){
+		ArrayList<Packman> listPack = new ArrayList<Packman>();
+		listPack.addAll(packmans);
+		return listPack;
 	}
 
 
