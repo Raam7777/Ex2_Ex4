@@ -1,20 +1,31 @@
 package GUI;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import org.omg.PortableServer.POA;
 
 import Geom.Point3D;
 
 public class Map {
-	int StartingWidth =1377;
-	int StartingHeiht = 642;
-	double TopLeftLon =35.2;
-	double TopLeftLat =32.1;
-	double bottomRightLon = 35.12-TopLeftLon;
-	double bottomRightLat = TopLeftLat- 32.06;
+	private static final int StartingWidth =1377;
+	private static final int StartingHeiht = 642;
 	
-	public Map() {
-		Map m= new Map();
+	private static final double TopLeftLon =35.2;
+	private static final double TopLeftLat =32.1;
+	private static final double bottomRightLon = 35.12-TopLeftLon;
+	private static final double bottomRightLat = TopLeftLat- 32.06;
+	
+	private BufferedImage image;
+	
+	public Map() throws IOException {
+		File imageFile = new File("Ariel1.png");
+		this.image = ImageIO.read(imageFile);	
 	}
+	
 	public  double pixelDistance(Point3D pixX, Point3D pixY) {
 		 int x1 =(int)CtP(pixX).x();
 		 int y1 =(int)CtP(pixX).y();
@@ -24,6 +35,7 @@ public class Map {
 		return res;
 		
 	}
+	
 	public  double pixelAngle(Point3D pixX, Point3D pixY) {
 		 int x1 =(int)CtP(pixX).x();
 		 int y1 =(int)CtP(pixX).y();
@@ -45,6 +57,7 @@ public class Map {
 		Point3D resault = new Point3D(coordsX,coordsY);
 		return resault;
 	}
+	
 	public Point3D CtP(Point3D ctp) { // coverting from coords to pixel - source code borought from stackoverflow
 		
 		double x =ctp.y()-TopLeftLon; 
