@@ -1,7 +1,10 @@
 package GIS;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -29,60 +32,54 @@ public class Game {
 			fruits.add(it_f.next());
 		}
 	}
-
-	public ArrayList<Fruits> ReadCsvFileF(String input) {
-
-		ArrayList<Fruits> Csv = new ArrayList<Fruits>();
-		File files = new File(input);
-		Scanner sc = null;
+	
+	public static Game Csv2Game(String input) {
+		
+		Game game = new Game(); 
+		String line = "";		
+		 
 		try {
-			sc = new Scanner(files);
-		}
-		catch (FileNotFoundException exc) {
-			exc.printStackTrace();
-		}
-		String in = sc.nextLine();
-		while(sc.hasNext()) {
-			in = sc.nextLine();
-			String[] arr = in.split(",");
-			if(arr[0].equals("F")) {
-				Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
-				Fruits line = new Fruits(point, Double.parseDouble(arr[5]),Integer.parseInt(arr[1]));
-				Csv.add(line);
+			BufferedReader br = new BufferedReader(new FileReader(input));
+			br.readLine();
+			while ((line = br.readLine()) != null) {
+				String[] arr = line.split(",");
+				String name = arr[0];
+				
+				if(name.equals("P")) {
+					int id = Integer.parseInt(arr[1]);
+					Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
+					double speed = Integer.parseInt(arr[5]);
+					double radius = Integer.parseInt(arr[6]);
+		
+					Packman packman = new Packman(point,radius,speed,id);
+					game.addPackman(packman);
+					
+				}else if(name.equals("F")) {
+					int id = Integer.parseInt(arr[1]);
+					Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
+					double weight = Integer.parseInt(arr[5]);
+					
+					
+					Fruits fruit = new Fruits(point,weight, id);
+					game.addFruits(fruit);
+					
+				}
 			}
+			
+			br.close();
+			
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		sc.close();
-		return Csv;
-	}
-
-
-
-
-	public ArrayList<Packman> ReadCsvFileP(String input) {
-
-		ArrayList<Packman> Csv = new ArrayList<Packman>();
-		File files = new File(input);
-		Scanner sc = null;
-		try {
-			sc = new Scanner(files);
-		}
-		catch (FileNotFoundException exc) {
-			exc.printStackTrace();
-		}
-		String in = sc.nextLine();
-		while(sc.hasNext()) {
-			in = sc.nextLine();
-			String[] arr = in.split(",");
-			if(arr[0].equals("P")) {
-				Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
-				Packman line = new Packman(point,Double.parseDouble(arr[5]),Double.parseDouble(arr[6]),Integer.parseInt(arr[1]));
-				Csv.add(line);
-			}
-		}
-		sc.close();
-		return Csv;
+		
+		
+		return game;
 	}
 	
+
 	public void addFruits(Fruits f){
 		fruits.add(f);
 	}
