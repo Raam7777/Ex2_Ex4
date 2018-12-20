@@ -20,9 +20,8 @@ public class Map {
 	
 	private BufferedImage image;
 	
-	public Map() throws IOException {
-		File imageFile = new File("Ariel1.png");
-		this.image = ImageIO.read(imageFile);	
+	public Map(){	
+		
 	}
 	
 	public  double pixelDistance(Point3D pixX, Point3D pixY) {
@@ -48,7 +47,7 @@ public class Map {
 		 return rs;
 	}
 	
-	public  Point3D PtC(int pixelX, int pixelY) {// coverting pixel to coords - source code borought from stackoverflow
+	public  Point3D PtC(double pixelX, double pixelY) {// coverting pixel to coords - source code borought from stackoverflow
 		double latx =((pixelX/StartingWidth)*bottomRightLon);
 		double lony= ((pixelY/StartingHeiht)*bottomRightLat);
 		double coordsX =TopLeftLat-lony;

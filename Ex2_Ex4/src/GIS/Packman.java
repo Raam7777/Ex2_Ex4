@@ -12,6 +12,13 @@ public class Packman {
 	private long time;
 	private int ID;
 
+	public Packman(int id, double lat ,double lon , double alt, double speed ,double radius) {
+		this.point = new Point3D(lat,lon,alt);
+		this.ID=id;
+		this.Speed=speed;
+		this.Radius=radius;
+	}
+	
 	public Packman(Point3D p, long t){
 		this.point = p;
 		this.time = t;

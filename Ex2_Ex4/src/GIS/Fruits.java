@@ -9,10 +9,17 @@ public class Fruits {
 	private double weight;
 	private int ID;
 	
-	public Fruits(Point3D p, double w, int id){
+	public Fruits(int id,double lat,double lon,double alt,double weight ) {
+		this.ID=id;
+		this.point=new Point3D(lat,lon,alt);
+		this.weight=weight;
+	}
+	
+	public Fruits(int id,Point3D p, double w){
+		this.ID = id;
 		this.point = p;
 		this.weight = w;
-		this.ID = id;
+		
 	}
 
 	

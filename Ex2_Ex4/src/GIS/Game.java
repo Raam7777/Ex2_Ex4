@@ -60,7 +60,7 @@ public class Game {
 					double weight = Integer.parseInt(arr[5]);
 					
 					
-					Fruits fruit = new Fruits(point,weight, id);
+					Fruits fruit = new Fruits( id,point,weight);
 					game.addFruits(fruit);
 					
 				}
