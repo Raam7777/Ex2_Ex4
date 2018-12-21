@@ -30,87 +30,84 @@ public class Game {
 			fruits.add(it_f.next());
 		}
 	}
-	
+
 	public Game(Game other){
 		this.fruits = new ArrayList<>(other.fruits);
 		this.packmans = new ArrayList<>(other.packmans);
 	}
-	
-	public static Game Csv2Game(String input) {
-		
+
+	public void Csv2Game(String input) {
+		int num=1;
 		Game game = new Game(); 
 		String line = "";		
-		 
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(input));
-			br.readLine();
+		//	br.readLine();
 			while ((line = br.readLine()) != null) {
 				String[] arr = line.split(",");
-				String name = arr[0];
-				
-				if(name.equals("P")) {
-					int id = Integer.parseInt(arr[1]);
-					Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
-					double speed = Integer.parseInt(arr[5]);
-					double radius = Integer.parseInt(arr[6]);
-		
-					Packman packman = new Packman(id,point,radius,speed);
-					game.addPackman(packman);
-					
-				}else if(name.equals("F")) {
-					int id = Integer.parseInt(arr[1]);
-					Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
-					double weight = Integer.parseInt(arr[5]);
-					
-					
-					Fruits fruit = new Fruits( id,point,weight);
-					game.addFruits(fruit);
-					
+				String name = "";
+				if(num>1){
+					name = arr[0];
+					if(name.equals("P")) {
+						int id = Integer.parseInt(arr[1]);
+						Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
+						double speed = Integer.parseInt(arr[5]);
+						double radius = Integer.parseInt(arr[6]);
+
+						game.getPackmans().add(new Packman(Integer.parseInt(arr[1]),Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]),Integer.parseInt(arr[5]),Integer.parseInt(arr[6])));
+
+					}else if(name.equals("F")) {
+						int id = Integer.parseInt(arr[1]);
+						Point3D point = new Point3D(Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
+						double weight = Integer.parseInt(arr[5]);
+						
+						game.getFruits().add(new Fruits(Integer.parseInt(arr[1]),Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]),Integer.parseInt(arr[5])));
+
+					}
+					num++;
 				}
 			}
-			
+
 			br.close();
-			
-			
+
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		return game;
 	}
-	
+
 
 	public void addFruits(Fruits f){
 		fruits.add(f);
 	}
-	
+
 	public void addPackman(Packman p){
 		packmans.add(p);
 	}
-	
+
 	public Iterator<Fruits> iteratorFruit(){
 		return fruits.iterator();
 	}
-	
+
 	public Iterator<Packman> iteratorPackman(){
 		return packmans.iterator();
 	}
-	
+
 	public int sizeFruits(){
 		return fruits.size();
 	}
-	
+
 	public int sizePackman(){
 		return packmans.size();
 	}
-	
+
 	public Fruits getFruits(int index) {
 		return fruits.get(index);
 	}
-	
+
 	public Packman getPackmen(int index) {
 		return packmans.get(index);
 	}
@@ -130,13 +127,13 @@ public class Game {
 	public void setPackmans(ArrayList<Packman> packmans) {
 		this.packmans = packmans;
 	}
-	
+
 	public ArrayList<Fruits> addAllFruits(){
 		ArrayList<Fruits> listF = new ArrayList<Fruits>();
 		listF.addAll(fruits);
 		return listF;
 	}
-	
+
 	public ArrayList<Packman> addAllPackmans(){
 		ArrayList<Packman> listPack = new ArrayList<Packman>();
 		listPack.addAll(packmans);

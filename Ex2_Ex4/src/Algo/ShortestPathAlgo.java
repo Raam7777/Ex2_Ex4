@@ -37,12 +37,12 @@ public class ShortestPathAlgo {
 				fruits.remove(0);//מוחק את הפרי במיקום שנחר ושומר את שאר הפירות במערך מהצד השמאלי
 			}
 		}
-		/*
+		
 		for(int i=0; i<path.getSize(); i++) {
 			Packman packman = path.getPathPackman(i);		
 			time = Math.max(time, packman.getTime());
 		}
-		*/
+		
 	}
 
 	public Game getGame() {

@@ -17,12 +17,17 @@ import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
+import Algo.ShortestPathAlgo;
 import GIS.Fruits;
 import GIS.Game;
 import GIS.Packman;
 import Geom.Point3D;
+
 
 
 
@@ -39,22 +44,15 @@ public class MyFrame extends JFrame implements MouseListener {
 	private int idFruit=0;
 	
 	private Game game;
-	private Map map;
+	private ShortestPathAlgo spa;
 	
-	private int PictureH;
-	private int PictureW;
-	
-	double heighty;
-	double widthx;
+
 	
 	public MyFrame() 
 	{
 		initGUI();
 		this.game = new Game();
-		this.map = new Map();
-		
-		
-		
+		this.spa = new ShortestPathAlgo(game);
 		
 		this.addMouseListener(this); 
 	}
@@ -72,6 +70,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		MenuItem addPackman = new MenuItem("Add Packman");
 		MenuItem addFruit = new MenuItem("Add Fruit");
 		MenuItem runGame = new MenuItem("Run Game");
+		MenuItem runCsv = new MenuItem("Run Csv");
 		MenuItem clearGame = new MenuItem("Clear Game");
 		
 		menuBar.add(add);
@@ -81,12 +80,31 @@ public class MyFrame extends JFrame implements MouseListener {
 		add.add(addPackman);
 		add.add(addFruit);
 		run.add(runGame);
+		run.add(runCsv);
 		clear.add(clearGame);
 		
 		
-		run.addActionListener(new ActionListener() {	//Starting The Game.
+		runGame.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-			
+				spa = new ShortestPathAlgo(game);
+				spa.pathGame();
+			}
+		});
+		
+		runCsv.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				JButton open = new JButton();
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setCurrentDirectory(new java.io.File("þþDocuments"));
+				fileChooser.setDialogTitle("run Csv");
+				if(fileChooser.showOpenDialog(open)==JFileChooser.APPROVE_OPTION) {
+					repaint();
+				}
+				if(fileChooser.getSelectedFile().getAbsolutePath().endsWith(".csv")) {
+					game.Csv2Game(fileChooser.getSelectedFile().getAbsolutePath());
+					repaint();
+				}
+				else JOptionPane.showMessageDialog(null, "Please try again");
 			}
 		});
 		
@@ -94,13 +112,9 @@ public class MyFrame extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				boolFruit = false ;
 				if(boolPackman == true)
-				{
-					boolPackman = false ;
-				}
+					boolPackman = false;
 				else if(boolPackman == false)
-				{
 					boolPackman = true ;
-				}
 				repaint();
 			}
 		});
@@ -110,13 +124,9 @@ public class MyFrame extends JFrame implements MouseListener {
 				
 				boolPackman = false ;
 				if(boolFruit == true)
-				{
 					boolFruit = false ;
-				}
 				else if(boolFruit == false)
-				{
 					boolFruit = true ;
-				}
 				repaint();
 			}
 		});
@@ -164,14 +174,10 @@ public class MyFrame extends JFrame implements MouseListener {
 				
 				while(itemPackman.hasNext()) {
 					Packman temp=itemPackman.next();
-					//Point3D pixel0 = map.CtP(temp.getPoint());
-					
 					g.drawImage(IconPackman, (int)temp.getPoint().x(), (int)temp.getPoint().y(),IconPackman.getWidth(),IconPackman.getHeight(), this);
 				}
 				while(itemFruit.hasNext()) {
 					Fruits temp = itemFruit.next();
-					//Point3D pixel1 = map.CtP(temp.getPoint());
-					
 					g.drawImage(IconFruit, (int)temp.getPoint().x(), (int)temp.getPoint().y(),IconFruit.getWidth(),IconFruit.getHeight(), this);
 				}
 			}

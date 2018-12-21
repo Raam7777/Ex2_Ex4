@@ -15,7 +15,7 @@ public class packmanTime {
 	public long time(Point3D newLocation){
 
 		MyCoords coords = new MyCoords();
-		double distance = coords.distance3d(location, newLocation);
+		double distance = Math.sqrt(Math.pow(location.x()-newLocation.x(),2) + Math.pow(newLocation.y()-location.y(),2));
 		long time = (long)(distance/packman.getSpeed());
 		totalTime = totalTime + time;
 
