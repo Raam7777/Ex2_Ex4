@@ -33,7 +33,7 @@ public class ShortestPathAlgo {
 				Packman packman = path.getPathPackman(i); //בוחר פאקמן מהמערך של הפאקמנים
 				Point3D location = path.getLocation();//המיקום של הפאקמן
 				spc.ShortestPathC(fruits, location);//מסדר את המיקומים של הפירות יחסית למיקום הפאקמן הנבחר
-				packman.setTime(pt.time(fruits.get(0).getFruit()));//מחשב את הזמן מפאקמן שנבחר עד הפרי במיקום הראשון במערך
+				packman.setTime(pt.time(fruits.get(0).getPoint()));//מחשב את הזמן מפאקמן שנבחר עד הפרי במיקום הראשון במערך
 				fruits.remove(0);//מוחק את הפרי במיקום שנחר ושומר את שאר הפירות במערך מהצד השמאלי
 			}
 		}

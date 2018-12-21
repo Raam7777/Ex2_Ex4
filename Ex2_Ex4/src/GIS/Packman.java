@@ -1,6 +1,6 @@
 package GIS;
 
-import Coords.MyCoords;
+
 import Geom.Point3D;
 
 public class Packman {
@@ -24,7 +24,7 @@ public class Packman {
 		this.time = t;
 	}
 
-	public Packman(Point3D p, double r , double s,int id){
+	public Packman(int id, Point3D p, double r , double s){
 		this.point = p;
 		this.Radius = r;
 		this.Speed = s;
@@ -76,6 +76,10 @@ public class Packman {
 
 	public void setTime(long time) {
 		this.time = time;
+	}
+	
+	public String toString() {
+		return "Packman ( "+"Point: "+this.getPoint()+" ID:"+this.getID()+" Speed:"+this.getSpeed()+" Radius:"+this.getRadius()+")";
 	}
 
 }

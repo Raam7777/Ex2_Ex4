@@ -22,6 +22,11 @@ public class Fruits {
 		
 	}
 
+	public Fruits(Fruits other){
+		this.point = other.point;
+		this.ID = other.ID;
+		this.weight = other.weight;
+	}
 	
 	public int getID() {
 		return ID;
@@ -33,7 +38,7 @@ public class Fruits {
 	}
 
 
-	public Point3D getFruit() {
+	public Point3D getPoint() {
 		return point;
 	}
 
@@ -43,13 +48,17 @@ public class Fruits {
 	}
 
 
-	public void setFruit(Point3D fruit) {
+	public void setPoint(Point3D fruit) {
 		this.point = fruit;
 	}
 
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+	
+	public String toString() {
+		return "Fruit ( "+"Point: "+this.getPoint()+" ID:"+this.getID()+" Weight:"+this.getWeight()+")";
 	}
 	
 }

@@ -1,13 +1,11 @@
 package GIS;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
 
 import Geom.Point3D;
 
@@ -33,6 +31,11 @@ public class Game {
 		}
 	}
 	
+	public Game(Game other){
+		this.fruits = new ArrayList<>(other.fruits);
+		this.packmans = new ArrayList<>(other.packmans);
+	}
+	
 	public static Game Csv2Game(String input) {
 		
 		Game game = new Game(); 
@@ -51,7 +54,7 @@ public class Game {
 					double speed = Integer.parseInt(arr[5]);
 					double radius = Integer.parseInt(arr[6]);
 		
-					Packman packman = new Packman(point,radius,speed,id);
+					Packman packman = new Packman(id,point,radius,speed);
 					game.addPackman(packman);
 					
 				}else if(name.equals("F")) {

@@ -1,9 +1,6 @@
 package GIS;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import Coords.MyCoords;
 import Geom.Point3D;
 
 

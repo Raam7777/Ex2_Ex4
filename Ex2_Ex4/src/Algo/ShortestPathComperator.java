@@ -17,8 +17,8 @@ public class ShortestPathComperator implements Comparator<Fruits>{
 
 			@Override
 			public int compare(Fruits f0, Fruits f1) {
-				double distanceF1 = coords.distance3d(location, f0.getFruit());
-				double distanceF2 = coords.distance3d(location, f1.getFruit());
+				double distanceF1 = coords.distance3d(location, f0.getPoint());
+				double distanceF2 = coords.distance3d(location, f1.getPoint());
 
 				if(distanceF1 - distanceF2 < 0) {
 					return -1;
