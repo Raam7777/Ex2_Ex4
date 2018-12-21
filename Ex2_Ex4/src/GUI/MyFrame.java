@@ -164,15 +164,15 @@ public class MyFrame extends JFrame implements MouseListener {
 				
 				while(itemPackman.hasNext()) {
 					Packman temp=itemPackman.next();
-					Point3D pixel0 = map.CtP(temp.getPoint());
+					//Point3D pixel0 = map.CtP(temp.getPoint());
 					
-					g.drawImage(IconPackman, 50, 50,IconPackman.getWidth(),IconPackman.getHeight(), this);
+					g.drawImage(IconPackman, (int)temp.getPoint().x(), (int)temp.getPoint().y(),IconPackman.getWidth(),IconPackman.getHeight(), this);
 				}
 				while(itemFruit.hasNext()) {
 					Fruits temp = itemFruit.next();
-					Point3D pixel1 = map.CtP(temp.getPoint());
+					//Point3D pixel1 = map.CtP(temp.getPoint());
 					
-					g.drawImage(IconFruit, 100, 100,IconFruit.getWidth(),IconFruit.getHeight(), this);
+					g.drawImage(IconFruit, (int)temp.getPoint().x(), (int)temp.getPoint().y(),IconFruit.getWidth(),IconFruit.getHeight(), this);
 				}
 			}
 		}
