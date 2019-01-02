@@ -1,6 +1,11 @@
 package GUI;
 
-
+/**
+/**
+ * this calss provide us option to create the myframe for the game
+ * @author Raam Banin and sapir gofshtein
+ */
+ 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Menu;
@@ -27,9 +32,14 @@ import GIS.Fruits;
 import GIS.Game;
 import GIS.Packman;
 import Geom.Point3D;
+import GIS.packmanTime;
 
-
-
+/**
+ * 
+ * @author Raam Banin and sapir gofshtein
+ * 
+ *
+ */
 
 public class MyFrame extends JFrame implements MouseListener {
 
@@ -240,7 +250,6 @@ public class MyFrame extends JFrame implements MouseListener {
 		window.setVisible(true);
 		window.setSize(window.myPicture.getWidth(),window.myPicture.getHeight());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 	
 }

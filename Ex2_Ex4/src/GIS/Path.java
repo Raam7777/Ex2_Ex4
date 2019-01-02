@@ -2,7 +2,11 @@ package GIS;
 
 import java.util.ArrayList;
 import Geom.Point3D;
-
+/**
+ * 
+ * @author Raam Banin and sapir gofshtein
+ *
+ */
 
 
 public class Path {
@@ -12,7 +16,10 @@ public class Path {
 	private long totalTime=0;
 	private ArrayList<Packman> packmans = new ArrayList<Packman>();
 	private Packman [] pathPackman;
-	
+	/**
+	 * constuctor
+	 * @param p
+	 */
 	
 	public Path(Packman p){
 		this.packman = p;
@@ -20,7 +27,10 @@ public class Path {
 		Packman packmanPoint = new Packman(location,totalTime);
 		packmans.add(packmanPoint);
 	}
-	
+	/**
+	 * constructor 
+	 * @param game
+	 */
 	public Path(Game game){
 		pathPackman = new Packman[game.sizePackman()];
 		for(int i=0; i<pathPackman.length; i++)

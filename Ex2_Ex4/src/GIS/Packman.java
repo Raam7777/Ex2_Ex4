@@ -1,6 +1,9 @@
 package GIS;
 
-
+/**
+ * this calss provide us option to create the object packman
+ * @author Raam Banin and sapir gofshtein
+ */
 import Geom.Point3D;
 
 public class Packman {
@@ -11,7 +14,15 @@ public class Packman {
 	private double Speed;
 	private long time;
 	private int ID;
-
+/**
+ * constructor
+ * @param id
+ * @param lat
+ * @param lon
+ * @param alt
+ * @param speed
+ * @param radius
+ */
 	public Packman(int id, double lat ,double lon , double alt, double speed ,double radius) {
 		this.point = new Point3D(lat,lon,alt);
 		this.ID=id;

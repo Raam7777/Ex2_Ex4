@@ -1,6 +1,8 @@
 package GIS;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +20,11 @@ public class Game {
 		fruits = new ArrayList<Fruits>();
 		packmans = new ArrayList<Packman>();
 	}
-
+/**
+ *  game - arraylist constuctor
+ * @param p
+ * @param f
+ */
 	public Game(ArrayList<Packman> p, ArrayList<Fruits> f) {
 		Iterator<Packman> it_p = p.iterator();
 		while(it_p.hasNext()) {
@@ -35,7 +41,10 @@ public class Game {
 		this.fruits = new ArrayList<>(other.fruits);
 		this.packmans = new ArrayList<>(other.packmans);
 	}
-
+/**
+ * csv2game - loading csv 
+ * @param input
+ */
 	public void Csv2Game(String input) {
 		int num=1;
 		Game game = new Game(); 
@@ -138,6 +147,35 @@ public class Game {
 		ArrayList<Packman> listPack = new ArrayList<Packman>();
 		listPack.addAll(packmans);
 		return listPack;
+	}
+	
+	public String toString(){
+		return "packmans: " + packmans.toString() + "fruits: " + fruits.toString(); 
+	}
+	
+	public static void main(String[] args)
+	{
+		FileInputStream inputStream = null;
+		Game game = new Game();
+		//game.addFruits(new Fruits(1,32.2,35.4,0,1));
+		//game.addPackman(new Packman(1,30.5,25.6,0,1,1));
+		String data = "C:\\Users\\Raam Banin\\Desktop\\game\\game_1543684662657.csv";
+		
+		/*
+		try{
+			File f = new File("");
+			inputStream = new FileInputStream("C:\\Users\\Raam Banin\\Desktop\\game\\game_1543684662657.csv");
+			int c;
+			while(( c =inputStream.read())!=-1)	{
+				data +=(char)c;
+			}
+			inputStream.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		System.out.print("data: " + data);
+		*/
 	}
 
 

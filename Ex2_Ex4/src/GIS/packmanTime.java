@@ -3,6 +3,7 @@ package GIS;
 import java.util.ArrayList;
 
 import Coords.MyCoords;
+import GUI.Map;
 import Geom.Point3D;
 
 public class packmanTime {
@@ -13,9 +14,9 @@ public class packmanTime {
 	private Packman packman;
 	
 	public long time(Point3D newLocation){
-
-		MyCoords coords = new MyCoords();
-		double distance = Math.sqrt(Math.pow(location.x()-newLocation.x(),2) + Math.pow(newLocation.y()-location.y(),2));
+		
+		Map m = new Map();
+		double distance = m.pixelDistance(location, newLocation);
 		long time = (long)(distance/packman.getSpeed());
 		totalTime = totalTime + time;
 

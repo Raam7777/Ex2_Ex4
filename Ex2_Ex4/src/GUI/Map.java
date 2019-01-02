@@ -1,5 +1,7 @@
 package GUI;
 
+import javax.swing.JFrame;
+
 import org.omg.PortableServer.POA;
 
 import Geom.Point3D;
@@ -107,6 +109,14 @@ public class Map
 			 
 		 }
 		 return rs;
+	}
+	
+	public static void main(String[] args)
+	{
+		Map m = new Map();
+		Point3D p = new Point3D(32,30,0);
+		Point3D p1 = new Point3D(32,30,0);
+		System.out.println(m.CtP(p));
 	}
 
 }
